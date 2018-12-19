@@ -1,86 +1,126 @@
-# language: objective-c
-# before_install:
-#   - pod repo update
-# script:
-# #   - xctool -workspace TravisTest.xcworkspace -scheme TravisTest -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-#   - xctool test -workspace TravisTest.xcworkspace -scheme TravisTest -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+# # language: objective-c
+# # before_install:
+# #   - pod repo update
+# # script:
+# # #   - xctool -workspace TravisTest.xcworkspace -scheme TravisTest -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+# #   - xctool test -workspace TravisTest.xcworkspace -scheme TravisTest -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+
+# # language: objective-c
+# # osx_image: xcode10
+# # xcode_workspace: aaaa.xcworkspace
+# # # xcode_scheme: aaaa
+# # # xcode_sdk: iphonesimulator12.1
+# # podfile: Podfile
+
+# # matrix:
+# #   include:
+# #   - xcode_scheme: aaaa
+# #     xcode_sdk: iphonesimulator12.0
+# #     env: DESTINATION="platform=iOS Simulator,OS=12.0,name=iPhone XS"
+# #   - xcode_scheme: aaaa
+# #     xcode_sdk: iphonesimulator12.0
+# #     env: DESTINATION="platform=iOS Simulator,OS=11.4,name=iPhone 8"
+# #   - xcode_scheme: aaaa
+# #     xcode_sdk: iphonesimulator12.0
+# #     env: DESTINATION="platform=iOS Simulator,OS=10.3.1,name=iPhone 7"
+# #   - xcode_scheme: aaaa
+# #     xcode_sdk: iphonesimulator12.0
+# #     env: DESTINATION="platform=iOS Simulator,OS=9.3,name=iPhone 6s"
+# #   - xcode_scheme: aaaa
+# #     xcode_sdk: iphonesimulator12.0
+# #     env: DESTINATION="platform=iOS Simulator,OS=8.3,name=iPhone 5"
+
+# # before_install:
+# #   - pod repo update
+# #   - xcodebuild -version -sdk
+
 
 # language: objective-c
-# osx_image: xcode10
+# # osx_image: xcode9.4.1
 # xcode_workspace: aaaa.xcworkspace
-# # xcode_scheme: aaaa
-# # xcode_sdk: iphonesimulator12.1
-# podfile: Podfile
+# xcode_scheme: aaaa
+# # xcode_destination: platform=iOS Simulator,OS=11.1,name=iPhone 8
+# #  - platform=iOS Simulator,OS=12.0,name=iPhone XS
+# #  - platform=iOS Simulator,OS=11.1,name=iPhone 8
+# #  - platform=iOS Simulator,OS=10.1,name=iPhone 7
+# #  - platform=iOS Simulator,OS=9.1,name=iPhone 6s
+# #  - platform=iOS Simulator,OS=8.1,name=iPhone 6
 
 # matrix:
 #   include:
-#   - xcode_scheme: aaaa
-#     xcode_sdk: iphonesimulator12.0
-#     env: DESTINATION="platform=iOS Simulator,OS=12.0,name=iPhone XS"
-#   - xcode_scheme: aaaa
-#     xcode_sdk: iphonesimulator12.0
-#     env: DESTINATION="platform=iOS Simulator,OS=11.4,name=iPhone 8"
-#   - xcode_scheme: aaaa
-#     xcode_sdk: iphonesimulator12.0
-#     env: DESTINATION="platform=iOS Simulator,OS=10.3.1,name=iPhone 7"
-#   - xcode_scheme: aaaa
-#     xcode_sdk: iphonesimulator12.0
-#     env: DESTINATION="platform=iOS Simulator,OS=9.3,name=iPhone 6s"
-#   - xcode_scheme: aaaa
-#     xcode_sdk: iphonesimulator12.0
-#     env: DESTINATION="platform=iOS Simulator,OS=8.3,name=iPhone 5"
+#   - xcode_destination: platform=iOS Simulator,OS=12.0,name=iPhone XS
+#   - xcode_destination: platform=iOS Simulator,OS=11.1,name=iPhone 8
+#   - xcode_destination: platform=iOS Simulator,OS=10.1,name=iPhone 7
+#   - xcode_destination: platform=iOS Simulator,OS=9.1,name=iPhone 6s
+#   - xcode_destination: platform=iOS Simulator,OS=8.1,name=iPhone 6
+
+# # matrix:
+# #   include:
+# #   - xcode_scheme: aaaa
+# #     xcode_sdk: iphonesimulator12.0
+# #     env: DESTINATION="platform=iOS Simulator,OS=12.0,name=iPhone XS"
+# #   - xcode_scheme: aaaa
+# #     xcode_sdk: iphonesimulator12.0
+# #     env: DESTINATION="platform=iOS Simulator,OS=11.1,name=iPhone 8"
+# #   - xcode_scheme: aaaa
+# #     xcode_sdk: iphonesimulator12.0
+# #     env: DESTINATION="platform=iOS Simulator,OS=10.1,name=iPhone 7"
+# #   - xcode_scheme: aaaa
+# #     xcode_sdk: iphonesimulator12.0
+# #     env: DESTINATION="platform=iOS Simulator,OS=9.1,name=iPhone 6s"
+# #   - xcode_scheme: aaaa
+# #     xcode_sdk: iphonesimulator12.0
+# #     env: DESTINATION="platform=iOS Simulator,OS=8.1,name=iPhone 6"
 
 # before_install:
 #   - pod repo update
 #   - xcodebuild -version -sdk
+#   - xcrun simctl list
+#   - xcrun instruments -s devices
 
-
-language: objective-c
-# osx_image: xcode9.4.1
-xcode_workspace: aaaa.xcworkspace
-xcode_scheme: aaaa
-# xcode_destination: platform=iOS Simulator,OS=11.1,name=iPhone 8
-#  - platform=iOS Simulator,OS=12.0,name=iPhone XS
-#  - platform=iOS Simulator,OS=11.1,name=iPhone 8
-#  - platform=iOS Simulator,OS=10.1,name=iPhone 7
-#  - platform=iOS Simulator,OS=9.1,name=iPhone 6s
-#  - platform=iOS Simulator,OS=8.1,name=iPhone 6
-
-matrix:
-  include:
-  - xcode_destination: platform=iOS Simulator,OS=12.0,name=iPhone XS
-  - xcode_destination: platform=iOS Simulator,OS=11.1,name=iPhone 8
-  - xcode_destination: platform=iOS Simulator,OS=10.1,name=iPhone 7
-  - xcode_destination: platform=iOS Simulator,OS=9.1,name=iPhone 6s
-  - xcode_destination: platform=iOS Simulator,OS=8.1,name=iPhone 6
-
-# matrix:
-#   include:
-#   - xcode_scheme: aaaa
-#     xcode_sdk: iphonesimulator12.0
-#     env: DESTINATION="platform=iOS Simulator,OS=12.0,name=iPhone XS"
-#   - xcode_scheme: aaaa
-#     xcode_sdk: iphonesimulator12.0
-#     env: DESTINATION="platform=iOS Simulator,OS=11.1,name=iPhone 8"
-#   - xcode_scheme: aaaa
-#     xcode_sdk: iphonesimulator12.0
-#     env: DESTINATION="platform=iOS Simulator,OS=10.1,name=iPhone 7"
-#   - xcode_scheme: aaaa
-#     xcode_sdk: iphonesimulator12.0
-#     env: DESTINATION="platform=iOS Simulator,OS=9.1,name=iPhone 6s"
-#   - xcode_scheme: aaaa
-#     xcode_sdk: iphonesimulator12.0
-#     env: DESTINATION="platform=iOS Simulator,OS=8.1,name=iPhone 6"
+# # script:
+# #   # - set -o pipefail
+# #   # - xcodebuild -workspace "${TRAVIS_XCODE_WORKSPACE}" -scheme "${TRAVIS_XCODE_SCHEME}" -sdk "${TRAVIS_XCODE_SDK}" -destination "${DESTINATION}" build test | xcpretty
+# #   - set -o pipefail
+# #   - xcodebuild clean build build-for-testing -workspace "${TRAVIS_XCODE_WORKSPACE}" -scheme "${TRAVIS_XCODE_SCHEME}" -sdk "${TRAVIS_XCODE_SDK}" -destination "${DESTINATION}" | xcpretty
+# #   - xcodebuild test-without-building -workspace "${TRAVIS_XCODE_WORKSPACE}" -scheme "${TRAVIS_XCODE_SCHEME}" -sdk "${TRAVIS_XCODE_SDK}" -destination "${DESTINATION}" | xcpretty
 
 before_install:
-  - pod repo update
-  - xcodebuild -version -sdk
-  - xcrun simctl list
-  - xcrun instruments -s devices
+    - gem install cocoapods
+    - pod repo update > /dev/null
+language: objective-c
+podfile: Podfile
+xcode_workspace: aaaa.xcworkspace
+xcode_scheme: aaaa
+xcode_sdk: iphonesimulator
+matrix:
+    fast_finish: true
+    include:
+        - {osx_image: xcode9.4,     env: 'PLAT=iOS  DST="OS=11.4,name=iPhone 6"'}
+        - {osx_image: xcode9.4,     env: 'PLAT=iOS  DST="OS=9.3,name=iPhone 6"'}
 
-# script:
-#   # - set -o pipefail
-#   # - xcodebuild -workspace "${TRAVIS_XCODE_WORKSPACE}" -scheme "${TRAVIS_XCODE_SCHEME}" -sdk "${TRAVIS_XCODE_SDK}" -destination "${DESTINATION}" build test | xcpretty
-#   - set -o pipefail
-#   - xcodebuild clean build build-for-testing -workspace "${TRAVIS_XCODE_WORKSPACE}" -scheme "${TRAVIS_XCODE_SCHEME}" -sdk "${TRAVIS_XCODE_SDK}" -destination "${DESTINATION}" | xcpretty
-#   - xcodebuild test-without-building -workspace "${TRAVIS_XCODE_WORKSPACE}" -scheme "${TRAVIS_XCODE_SCHEME}" -sdk "${TRAVIS_XCODE_SDK}" -destination "${DESTINATION}" | xcpretty
+        - {osx_image: xcode10, env: 'PLAT=iOS  DST="OS=11.4,name=iPhone 6"'}
+        - {osx_image: xcode10, env: 'PLAT=iOS  DST="OS=9.3,name=iPhone 6"'}
+
+    allow_failures:
+        - {osx_image: xcode10, env: 'PLAT=iOS  DST="OS=11.4,name=iPhone 6"'}
+        - {osx_image: xcode10, env: 'PLAT=iOS  DST="OS=9.3,name=iPhone 6"'}
+
+script:
+    - "xcodebuild -version"
+    - "set -o pipefail"
+    - "xcodebuild \
+        -workspace $TRAVIS_XCODE_WORKSPACE \
+        -scheme \"$TRAVIS_XCODE_SCHEME\" \
+        -sdk $TRAVIS_XCODE_SDK \
+        -destination \"$DST\" \
+        -enableCodeCoverage YES \
+        -quiet \
+        clean build-for-testing | xcpretty"
+    - "xcodebuild \
+        -workspace $TRAVIS_XCODE_WORKSPACE \
+        -scheme \"$TRAVIS_XCODE_SCHEME\" \
+        -sdk $TRAVIS_XCODE_SDK \
+        -destination \"$DST\" \
+        -quiet \
+        test-without-building | xcpretty"
