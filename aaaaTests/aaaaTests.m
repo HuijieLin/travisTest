@@ -1,18 +1,18 @@
 //
-//  TravisTestTests.m
-//  TravisTestTests
+//  aaaaTests.m
+//  aaaaTests
 //
-//  Created by linhuijie on 2018/12/18.
+//  Created by linhuijie on 2018/12/19.
 //  Copyright © 2018年 linhuijie. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 
-@interface TravisTestTests : XCTestCase
+@interface aaaaTests : XCTestCase
 
 @end
 
-@implementation TravisTestTests
+@implementation aaaaTests
 
 - (void)setUp {
     // Put setup code here. This method is called before the invocation of each test method in the class.
