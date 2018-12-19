@@ -9,16 +9,38 @@ before_install:
   - xcodebuild -version -sdk
   - xcrun instruments -s devices
 
-env:
-  - UDID="DFAF4EF2-9DFF-47E7-A70E-08474E6AF89F", IOS_DEVICE="iPhone X (12.1)"
-  - UDID="1A15CA03-24BC-4263-9417-FDF81BAA7E02", IOS_DEVICE="iPhone X (11.1)"
-  - UDID="D947E291-A495-4D19-8BB3-C1EFAE9383CD", IOS_DEVICE="iPhone 7 (10.1)"
-  - UDID="8D30A771-F8A2-4089-A9A9-69156FA64317", IOS_DEVICE="iPhone 6 (9.1)"
-  - UDID="5AC6A2C7-E739-4B53-9F4A-3440F06A7BBD", IOS_DEVICE="iPhone 6 (8.1)"
+matrix:
+  include:
+     - xcode_destination: platform=iOS Simulator,OS=12.1,name=iPhone X
+     - xcode_destination: platform=iOS Simulator,OS=11.1,name=iPhone X
+     - xcode_destination: platform=iOS Simulator,OS=10.1,name=iPhone 7
+     - xcode_destination: platform=iOS Simulator,OS=9.1,name=iPhone 6
+     - xcode_destination: platform=iOS Simulator,OS=8.1,name=iPhone 6
 
-script:
-  - xcrun simctl boot $UDID
-  - xcodebuild -workspace aaaa.xcworkspace -scheme aaaa -sdk iphonesimulator -destination "platform=iOS Simulator,id=$UDID" build test | xcpretty
+# Start good-1
+# language: objective-c
+# osx_image: xcode10.1
+# xcode_workspace: aaaa.xcworkspace
+# xcode_scheme: aaaa
+# podfile: Podfile
+
+# before_install:
+#   - pod repo update
+#   - xcodebuild -version -sdk
+#   - xcrun instruments -s devices
+
+# env:
+#   - UDID="DFAF4EF2-9DFF-47E7-A70E-08474E6AF89F", IOS_DEVICE="iPhone X (12.1)"
+#   - UDID="1A15CA03-24BC-4263-9417-FDF81BAA7E02", IOS_DEVICE="iPhone X (11.1)"
+#   - UDID="D947E291-A495-4D19-8BB3-C1EFAE9383CD", IOS_DEVICE="iPhone 7 (10.1)"
+#   - UDID="8D30A771-F8A2-4089-A9A9-69156FA64317", IOS_DEVICE="iPhone 6 (9.1)"
+#   - UDID="5AC6A2C7-E739-4B53-9F4A-3440F06A7BBD", IOS_DEVICE="iPhone 6 (8.1)"
+
+# script:
+#   - xcrun simctl boot $UDID
+#   - xcodebuild -workspace aaaa.xcworkspace -scheme aaaa -sdk iphonesimulator -destination "platform=iOS Simulator,id=$UDID" build test | xcpretty
+# End good-1
+
 
 # # # language: objective-c
 # # # before_install:
