@@ -75,6 +75,8 @@ matrix:
 before_install:
   - pod repo update
   - xcodebuild -version -sdk
+  - xcrun simctl list
+  - xcrun instruments -s devices
 
 # script:
 #   # - set -o pipefail
