@@ -12,12 +12,13 @@ before_install:
 env:
   - UDID="DFAF4EF2-9DFF-47E7-A70E-08474E6AF89F", IOS_DEVICE="iPhone X (12.1)"
   - UDID="1A15CA03-24BC-4263-9417-FDF81BAA7E02", IOS_DEVICE="iPhone X (11.1)"
+  - UDID="D947E291-A495-4D19-8BB3-C1EFAE9383CD", IOS_DEVICE="iPhone 7 (10.1)"
+  - UDID="8D30A771-F8A2-4089-A9A9-69156FA64317", IOS_DEVICE="iPhone 6 (9.1)"
+  - UDID="5AC6A2C7-E739-4B53-9F4A-3440F06A7BB", IOS_DEVICE="iPhone 6 (8.1)"
 
 script:
-  - xcrun simctl boot "DFAF4EF2-9DFF-47E7-A70E-08474E6AF89F"
-  - xcrun simctl boot "1A15CA03-24BC-4263-9417-FDF81BAA7E02"
+  - xcrun simctl boot $UDID
   - xcodebuild -workspace aaaa.xcworkspace -scheme aaaa -sdk iphonesimulator -destination "platform=iOS Simulator,id=$UDID" build test | xcpretty
-  - osascript -e 'tell app "Simulator" to quit'
 
 # # # language: objective-c
 # # # before_install:
