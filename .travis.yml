@@ -1,3 +1,27 @@
+language: objective-c
+osx_image: xcode10
+
+env:
+  global:
+    - IOS_FRAMEWORK_WORKSPACE="aaaa.xcworkspace"
+    - IOS_FRAMEWORK_SCHEME="aaaa"
+    - IOS_SDK=iphonesimulator12.0
+
+before_install:
+  - pod repo update
+  - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
+
+script:
+  - set -o pipefail
+  - xcodebuild -version
+  - xcodebuild -showsdks
+
+  - xcodebuild -workspace "$IOS_FRAMEWORK_WORKSPACE" -scheme "$IOS_FRAMEWORK_SCHEME" -sdk "$IOS_SDK" -destination "platform=iOS Simulator,OS=12.0,name=iPhone XS Max" -configuration Debug ONLY_ACTIVE_ARCH=NO test | xcpretty -c
+  - xcodebuild -workspace "$IOS_FRAMEWORK_WORKSPACE" -scheme "$IOS_FRAMEWORK_SCHEME" -sdk "$IOS_SDK" -destination "platform=iOS Simulator,OS=11.4,name=iPhone 8" -configuration Debug ONLY_ACTIVE_ARCH=NO test | xcpretty -c
+  - xcodebuild -workspace "$IOS_FRAMEWORK_WORKSPACE" -scheme "$IOS_FRAMEWORK_SCHEME" -sdk "$IOS_SDK" -destination "platform=iOS Simulator,OS=10.1,name=iPhone 7 Plus" -configuration Debug ONLY_ACTIVE_ARCH=NO test | xcpretty -c
+  - xcodebuild -workspace "$IOS_FRAMEWORK_WORKSPACE" -scheme "$IOS_FRAMEWORK_SCHEME" -sdk "$IOS_SDK" -destination "platform=iOS Simulator,OS=9.3,name=iPhone 6" -configuration Debug ONLY_ACTIVE_ARCH=NO test | xcpretty -c
+  - xcodebuild -workspace "$IOS_FRAMEWORK_WORKSPACE" -scheme "$IOS_FRAMEWORK_SCHEME" -sdk "$IOS_SDK" -destination "platform=iOS Simulator,OS=8.1,name=iPhone 5" -configuration Debug ONLY_ACTIVE_ARCH=NO test | xcpretty -c
+
 # Start good-2
 # language: objective-c
 # osx_image: xcode10.1
@@ -20,28 +44,28 @@
 # End good-2
 
 # Start good-1
-language: objective-c
-osx_image: xcode10.1
-xcode_workspace: aaaa.xcworkspace
-xcode_scheme: aaaa
-podfile: Podfile
+# language: objective-c
+# osx_image: xcode10.1
+# xcode_workspace: aaaa.xcworkspace
+# xcode_scheme: aaaa
+# podfile: Podfile
 
-before_install:
-  - pod repo update
-  - xcodebuild -version -sdk
-  - xcrun instruments -s devices
+# before_install:
+#   - pod repo update
+#   - xcodebuild -version -sdk
+#   - xcrun instruments -s devices
 
-env:
-  - UDID="DFAF4EF2-9DFF-47E7-A70E-08474E6AF89F", IOS_DEVICE="iPhone X (12.1)"
-  - UDID="1A15CA03-24BC-4263-9417-FDF81BAA7E02", IOS_DEVICE="iPhone X (11.1)"
-  - UDID="D947E291-A495-4D19-8BB3-C1EFAE9383CD", IOS_DEVICE="iPhone 7 (10.1)"
-  - UDID="8D30A771-F8A2-4089-A9A9-69156FA64317", IOS_DEVICE="iPhone 6 (9.1)"
-  - UDID="5AC6A2C7-E739-4B53-9F4A-3440F06A7BBD", IOS_DEVICE="iPhone 6 (8.1)"
+# env:
+#   - UDID="DFAF4EF2-9DFF-47E7-A70E-08474E6AF89F", IOS_DEVICE="iPhone X (12.1)"
+#   - UDID="1A15CA03-24BC-4263-9417-FDF81BAA7E02", IOS_DEVICE="iPhone X (11.1)"
+#   - UDID="D947E291-A495-4D19-8BB3-C1EFAE9383CD", IOS_DEVICE="iPhone 7 (10.1)"
+#   - UDID="8D30A771-F8A2-4089-A9A9-69156FA64317", IOS_DEVICE="iPhone 6 (9.1)"
+#   - UDID="5AC6A2C7-E739-4B53-9F4A-3440F06A7BBD", IOS_DEVICE="iPhone 6 (8.1)"
 
-script:
-  - xcrun simctl boot $UDID
+# script:
+#   - xcrun simctl boot $UDID
   # - xcodebuild -workspace aaaa.xcworkspace -scheme aaaa -sdk iphonesimulator -destination "platform=iOS Simulator,id=$UDID" build test | xcpretty
-  - xcodebuild -workspace aaaa.xcworkspace -scheme aaaa -sdk iphonesimulator -destination "platform=iOS Simulator,id=$UDID" -UseModernBuildSystem=NO build test | xcpretty
+  # - xcodebuild -workspace aaaa.xcworkspace -scheme aaaa -sdk iphonesimulator -destination "platform=iOS Simulator,id=$UDID" -UseModernBuildSystem=NO build test | xcpretty
 # End good-1
 
 
