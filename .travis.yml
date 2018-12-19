@@ -14,13 +14,8 @@ env:
   - UDID="1A15CA03-24BC-4263-9417-FDF81BAA7E02", IOS_DEVICE="iPhone X (11.1)"
 
 script:
-  - xcrun instruments -s devices
-  - echo staring build and test...
-  - open -a "simulator" --args -CurrentDeviceUDID $UDID
-  - open -a "Simulator" --args -CurrentDeviceUDID $UDID
   - xcrun simctl boot "DFAF4EF2-9DFF-47E7-A70E-08474E6AF89F"
   - xcrun simctl boot "1A15CA03-24BC-4263-9417-FDF81BAA7E02"
-  - xcodebuild test -workspace aaaa.xcworkspace -scheme aaaa -configuration Debug -sdk iphonesimulator -destination "platform=iOS Simulator,id=$UDID"
   - xcodebuild -workspace aaaa.xcworkspace -scheme aaaa -sdk iphonesimulator -destination "platform=iOS Simulator,id=$UDID" build test | xcpretty
   - osascript -e 'tell app "Simulator" to quit'
 
