@@ -5,31 +5,47 @@
 # #   - xctool -workspace TravisTest.xcworkspace -scheme TravisTest -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
 #   - xctool test -workspace TravisTest.xcworkspace -scheme TravisTest -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
 
+# language: objective-c
+# osx_image: xcode10
+# xcode_workspace: aaaa.xcworkspace
+# # xcode_scheme: aaaa
+# # xcode_sdk: iphonesimulator12.1
+# podfile: Podfile
+
+# matrix:
+#   include:
+#   - xcode_scheme: aaaa
+#     xcode_sdk: iphonesimulator12.0
+#     env: DESTINATION="platform=iOS Simulator,OS=12.0,name=iPhone XS"
+#   - xcode_scheme: aaaa
+#     xcode_sdk: iphonesimulator12.0
+#     env: DESTINATION="platform=iOS Simulator,OS=11.4,name=iPhone 8"
+#   - xcode_scheme: aaaa
+#     xcode_sdk: iphonesimulator12.0
+#     env: DESTINATION="platform=iOS Simulator,OS=10.3.1,name=iPhone 7"
+#   - xcode_scheme: aaaa
+#     xcode_sdk: iphonesimulator12.0
+#     env: DESTINATION="platform=iOS Simulator,OS=9.3,name=iPhone 6s"
+#   - xcode_scheme: aaaa
+#     xcode_sdk: iphonesimulator12.0
+#     env: DESTINATION="platform=iOS Simulator,OS=8.3,name=iPhone 5"
+
+# before_install:
+#   - pod repo update
+#   - xcodebuild -version -sdk
+
+
 language: objective-c
-osx_image: xcode10
-xcode_workspace: aaaa.xcworkspace
-# xcode_scheme: aaaa
-# xcode_sdk: iphonesimulator12.1
-podfile: Podfile
-
-matrix:
-  include:
-  - xcode_scheme: aaaa
-    xcode_sdk: iphonesimulator12.0
-    env: DESTINATION="platform=iOS Simulator,OS=12.0,name=iPhone XS"
-  - xcode_scheme: aaaa
-    xcode_sdk: iphonesimulator12.0
-    env: DESTINATION="platform=iOS Simulator,OS=11.4,name=iPhone 8"
-  - xcode_scheme: aaaa
-    xcode_sdk: iphonesimulator12.0
-    env: DESTINATION="platform=iOS Simulator,OS=10.3.1,name=iPhone 7"
-  - xcode_scheme: aaaa
-    xcode_sdk: iphonesimulator12.0
-    env: DESTINATION="platform=iOS Simulator,OS=9.3,name=iPhone 6s"
-  - xcode_scheme: aaaa
-    xcode_sdk: iphonesimulator12.0
-    env: DESTINATION="platform=iOS Simulator,OS=8.3,name=iPhone 5"
-
+osx_image: xcode10.1
 before_install:
   - pod repo update
   - xcodebuild -version -sdk
+xcode_workspace:  aaaa.xcworkspace
+xcode_scheme: aaaa
+xcode_sdk: iphonesimulator
+env:
+  - XCODE_SDK=iphonesimulator8.1
+  - XCODE_SDK=iphonesimulator9.1
+  - XCODE_SDK=iphonesimulator10.1
+  - XCODE_SDK=iphonesimulator11.1
+  - XCODE_SDK=iphonesimulator12.1
