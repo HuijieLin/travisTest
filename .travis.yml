@@ -33,6 +33,7 @@ podfile: Podfile
 before_install:
   - pod repo update
   - xcodebuild -version -sdk
+  - xcrun instruments -w 'iPhone 7 (10.1)'
 
 script:
   - export IOS_SIMULATOR_UDID=`instruments -s devices | grep "iPhone 6 (9.1" | awk -F '[ ]' '{print $4}' | awk -F '[\[]' '{print $2}' | sed 's/.$//'`
