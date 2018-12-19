@@ -6,28 +6,29 @@
 #   - xctool test -workspace TravisTest.xcworkspace -scheme TravisTest -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
 
 language: objective-c
-# osx_image: xcode10.1
+osx_image: xcode10.1
 xcode_workspace: aaaa.xcworkspace
-xcode_scheme: aaaa
+# xcode_scheme: aaaa
 # xcode_sdk: iphonesimulator12.1
 podfile: Podfile
 
 matrix:
   include:
-    - osx_image: xcode10.1
-      xcode_sdk: iphonesimulator12.1
-    - osx_image: xcode9.1
-      xcode_sdk: iphonesimulator11.1
-    - osx_image: xcode9.1
-      # xcode_sdk: iphonesimulator11.1
-      xcode_destination: platform=iOS Simulator,OS=9.3,name=iPhone 5s
-    # - osx_image: xcode8.3
-    #   xcode_sdk: iphonesimulator10.3
-    # - osx_image: xcode8
-    #   xcode_sdk: iphonesimulator9.3
-    # - osx_image: xcode6.4
-    #   xcode_sdk: iphonesimulator8.4
-
+  - xcode_scheme: aaaa
+    xcode_sdk: iphonesimulator12.0
+    env: DESTINATION="platform=iOS Simulator,OS=12.0,name=iPhone XS"
+  - xcode_scheme: aaaa
+    xcode_sdk: iphonesimulator12.0
+    env: DESTINATION="platform=iOS Simulator,OS=11.4,name=iPhone 8"
+  - xcode_scheme: aaaa
+    xcode_sdk: iphonesimulator12.0
+    env: DESTINATION="platform=iOS Simulator,OS=10.3.1,name=iPhone 7"
+  - xcode_scheme: aaaa
+    xcode_sdk: iphonesimulator12.0
+    env: DESTINATION="platform=iOS Simulator,OS=9.3,name=iPhone 6s"
+  - xcode_scheme: aaaa
+    xcode_sdk: iphonesimulator12.0
+    env: DESTINATION="platform=iOS Simulator,OS=8.3,name=iPhone 5"
 
 before_install:
   - pod repo update
