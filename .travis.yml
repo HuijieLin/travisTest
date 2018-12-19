@@ -67,8 +67,8 @@ env:
 script:
   - xcrun simctl boot $UDID
   - sleep 25
-  # - xcodebuild -workspace aaaa.xcworkspace -scheme aaaa -sdk iphonesimulator -destination "platform=iOS Simulator,id=$UDID" build test | xcpretty
-  - xcodebuild -workspace aaaa.xcworkspace -scheme aaaa -sdk iphonesimulator -destination "platform=iOS Simulator,id=$UDID" -configuration Debug ONLY_ACTIVE_ARCH=NO test | xcpretty
+  - xcodebuild -workspace aaaa.xcworkspace -scheme aaaa -sdk iphonesimulator -destination "platform=iOS Simulator,id=$UDID" build test | xcpretty
+  # - xcodebuild -workspace aaaa.xcworkspace -scheme aaaa -sdk iphonesimulator -destination "platform=iOS Simulator,id=$UDID" -configuration Debug ONLY_ACTIVE_ARCH=NO test | xcpretty
 
 after_success:
   - sleep 15 
