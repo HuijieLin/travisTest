@@ -6,7 +6,7 @@
 # #   - xctool test -workspace TravisTest.xcworkspace -scheme TravisTest -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
 
 language: objective-c
-osx_image: xcode10
+osx_image: xcode10.1
 xcode_workspace: aaaa.xcworkspace
 xcode_scheme: aaaa
 # xcode_sdk: iphonesimulator12.1
