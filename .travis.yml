@@ -8,9 +8,22 @@
 language: objective-c
 osx_image: xcode10.1
 xcode_workspace: aaaa.xcworkspace
-xcode_scheme: aaaa
-xcode_sdk: iphonesimulator12.1
+# xcode_scheme: aaaa
+# xcode_sdk: iphonesimulator12.1
 podfile: Podfile
+
+matrix:
+  include:
+    - xcode_scheme: aaaa
+      xcode_sdk: iphonesimulator12.1
+    - xcode_scheme: aaaa
+      xcode_sdk: iphonesimulator11.1
+    - xcode_scheme: aaaa
+      xcode_sdk: iphonesimulator10.1
+    - xcode_scheme: aaaa
+      xcode_sdk: iphonesimulator9.1
+    - xcode_scheme: aaaa
+      xcode_sdk: iphonesimulator8.1
 
 before_install:
   - pod repo update
