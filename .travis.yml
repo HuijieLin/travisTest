@@ -65,9 +65,8 @@ env:
   - UDID="5AC6A2C7-E739-4B53-9F4A-3440F06A7BBD", IOS_DEVICE="iPhone 6 (8.1)"
 
 script:
-  - xcrun simctl boot $UDID
-  # - xcodebuild -workspace aaaa.xcworkspace -scheme aaaa -sdk iphonesimulator -destination "platform=iOS Simulator,id=$UDID" build test | xcpretty
-  - xcodebuild test -workspace aaaa.xcworkspace -scheme aaaa -destination "platform=iOS Simulator,id=$UDID"
+  # - xcrun simctl boot $UDID
+  - xcodebuild -workspace aaaa.xcworkspace -scheme aaaa -sdk iphonesimulator -destination "platform=iOS Simulator,id=$UDID" build test | xcpretty
 
 after_success:
   - sleep 15 
