@@ -13,8 +13,8 @@ before_install:
   - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
   - export NEED_PRE_BOOT=`instruments -s devices | grep "iPhone 5 (8.1" | awk -F '[ ]' '{print $4}' | awk -F '[\[]' '{print $2}' | sed 's/.$//'`
   - echo $NEED_PRE_BOOT
-  - ios-sim showdevicetypes
   - npm install ios-sim -g
+  - ios-sim showdevicetypes
   - ios-sim start --devicetypeid "com.apple.CoreSimulator.SimDeviceType.iPhone-5, 8.1"
 
 script:
