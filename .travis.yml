@@ -11,25 +11,29 @@ env:
 before_install:
   - pod repo update
   - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
+  - export NEED_PRE_BOOT=`instruments -s devices | grep "iPhone 5 (8.1" | awk -F '[ ]' '{print $4}' | awk -F '[\[]' '{print $2}' | sed 's/.$//'`
+  - echo $NEED_PRE_BOOT
+  - npm install ios-sim -g
+  - ios-sim start --devicetypeid "com.apple.CoreSimulator.SimDeviceType.iPhone-5, 8.1"
 
 script:
   - set -o pipefail
   - xcodebuild -version
   - xcodebuild -showsdks
-  - xcrun simctl boot E5486005-1831-4DBE-B151-B54F00F798C9
-  - sleep 10
+  # - xcrun simctl boot E5486005-1831-4DBE-B151-B54F00F798C9
+  # - sleep 10
   - xcodebuild -workspace "$IOS_FRAMEWORK_WORKSPACE" -scheme "$IOS_FRAMEWORK_SCHEME" -sdk "$IOS_SDK" -destination "platform=iOS Simulator,OS=12.0,name=iPhone XS Max" -configuration Debug ONLY_ACTIVE_ARCH=NO test | xcpretty -c
-  - xcrun simctl boot 24BC6B8C-40F5-44F9-99F8-D22E3A8A133C
-  - sleep 10
+  # - xcrun simctl boot 24BC6B8C-40F5-44F9-99F8-D22E3A8A133C
+  # - sleep 10
   - xcodebuild -workspace "$IOS_FRAMEWORK_WORKSPACE" -scheme "$IOS_FRAMEWORK_SCHEME" -sdk "$IOS_SDK" -destination "platform=iOS Simulator,OS=11.4,name=iPhone 8" -configuration Debug ONLY_ACTIVE_ARCH=NO test | xcpretty -c
-  - xcrun simctl boot FCD373ED-4707-446E-9E61-9970F45603BA
-  - sleep 10
+  # - xcrun simctl boot FCD373ED-4707-446E-9E61-9970F45603BA
+  # - sleep 10
   - xcodebuild -workspace "$IOS_FRAMEWORK_WORKSPACE" -scheme "$IOS_FRAMEWORK_SCHEME" -sdk "$IOS_SDK" -destination "platform=iOS Simulator,OS=10.1,name=iPhone 7 Plus" -configuration Debug ONLY_ACTIVE_ARCH=NO test | xcpretty -c
-  - xcrun simctl boot 070794B4-9D06-4197-B536-78925DFB7430
-  - sleep 10
+  # - xcrun simctl boot 070794B4-9D06-4197-B536-78925DFB7430
+  # - sleep 10
   - xcodebuild -workspace "$IOS_FRAMEWORK_WORKSPACE" -scheme "$IOS_FRAMEWORK_SCHEME" -sdk "$IOS_SDK" -destination "platform=iOS Simulator,OS=9.3,name=iPhone 6" -configuration Debug ONLY_ACTIVE_ARCH=NO test | xcpretty -c
-  - xcrun simctl boot 13ABB1EA-A5AF-493C-8F47-35AE58F2B818
-  - sleep 10
+  # - xcrun simctl boot 13ABB1EA-A5AF-493C-8F47-35AE58F2B818
+  # - sleep 10
   - xcodebuild -workspace "$IOS_FRAMEWORK_WORKSPACE" -scheme "$IOS_FRAMEWORK_SCHEME" -sdk "$IOS_SDK" -destination "platform=iOS Simulator,OS=8.1,name=iPhone 5" -configuration Debug ONLY_ACTIVE_ARCH=NO test | xcpretty -c
 ####### End good-3
 
